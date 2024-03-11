@@ -1,0 +1,36 @@
+#pageTop{
+    font-size: 100px;
+    text-align: center;
+    font-family: "Gill Sans", sans-serif;
+    border: 5px solid black;
+    position: relative;
+    align-items: center;
+}
+
+.container{
+    font-size: 25px;
+    border: 5px solid black;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    height: 20vh;
+    width: 200px;
+    gap: 10px;
+}
+
+#todayRadio{
+    border: none;
+}
+
+#weekRadio{
+    border: none;
+}
+
+#highestRadio{
+    border: none;
+}
+
+#filterTop{
+    border: none;
+    text-align: center;
+}

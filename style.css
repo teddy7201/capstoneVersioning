@@ -1,31 +1,34 @@
 #page{
-    margin: 0;
     padding: 50px;
-    background-color: #000000;
-    justify-content: center;
-    align-items: center;
-    border: 10px blue
-
+    background-color: black;
+    display: grid;
 }
 
 header{
     background-color: #000000;
     color: #ffffff;
-    padding: 10px;
+    font-family: "Gill Sans", sans-serif;
     text-align: center;
     border-radius: 5px;
     position: relative;
+    font-size: 75px;
+    margin: 20px;
+    
 }
 
 .container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 10px solid blue;
-    height: 70vh;
-    flex-wrap: wrap;
-    flex-direction: row;
+    /*
     display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center;
+    align-content: space-evenly;
+    height: 60vh;
+    margin: 50px;
+    padding-block: 0px
+    */
+    display: flex;
+    flex-wrap: row wrap;
 }
 
 button{
@@ -33,8 +36,11 @@ button{
     height: 100px;
     background-color: black;
     color: white;
-    border: none;
+    border: 5px solid white;
+    border-radius: 10px;
     cursor: pointer;
+    font-size: 50px;
+    font-family: "Gill Sans", sans-serif;
 }
 
 button:hover{
@@ -54,5 +60,7 @@ button:active{
 
 label{
     color: #ffffff;
-    font-size: 25px;
+    font-size: 50px;
+    height: 100px;
+    font-family: "Gill Sans", sans-serif;
 }

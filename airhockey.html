@@ -4,34 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <title>Home Page</title>
 </head>
-<body>
-    <div id="page">
+<body style="margin:0;">
+    <div style="margin:0;" id="page">
 
                 <header>
                     Web Hockey
                 </header>
     
         <div class="container">
-                <div class="box" id="createGameBtn">
+                <div class="container" id="createGameBtn">
                     <button onclick = "createGame()">Create Game</button>
                 </div>
     
-                <div class="box" id="gameCodeInput">
+                <div class="container" id="gameCodeInput">
                     <div class="form-group">
                         <label class='form_med' for="gameCode">Game Code:</label>
                         <input type="text" id="gameCode" name="gameCode" class="form-control form_md form_input" size='10'>
                     </div>
                 </div>
     
-                <div class="box" id="playerNameInput">
+                <div class="container" id="playerNameInput">
                     <div class="form-group">
                         <label class='form_med' for="playerName">Player Name:</label>
                         <input type="text" id="playerName" name="playerName" class="form-control form_md form_input" size='10'>
                     </div>
                 </div>
     
-                <div class="box" id="leaderboardBtn">
+                <div class="container" id="leaderboardBtn">
                     <button onclick="toLeaderboard()">Leaderboard</button>
                 </div><div id = "homeScreen">
 
@@ -43,6 +44,8 @@
         </div>
 
     </div>
-        
+    
+    <script src="function.js"></script>
+
 </body>
 </html>
