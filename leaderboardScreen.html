@@ -6,39 +6,51 @@
     <link rel="stylesheet" href="leaderboardStyle.css">
     <title>Leaderboard</title>
 </head>
-<body style="margin:0;">
+<body style="margin: 0;">
     <div id="page">
         <header id="pageTop">
             Leaderboard
         </header>
         
-        <div class="container">
-            <header class="container" id="filterTop">
-                Filters
-            </header>
-
-            <div class="container" id="todayRadio">
-                <div class="form-group">
-                    <input type="radio" id="today" name="today">
-                    <label for="today">Today</label><br>
+        <div class="contentContainer">
+            <div class="filterButContainer">
+                <div class="container">
+                    <header class="container" id="filterTop">
+                        Filters
+                    </header>
+        
+                    <div class="container" id="todayRadio">
+                        <div class="form-group">
+                            <input type="radio" id="today" name="today">
+                            <label for="today">Today</label><br>
+                        </div>
+                    </div>
+        
+                    <div class="container" id="weekRadio">
+                        <div id="form-group">
+                            <input type="radio" id="week" name="week">
+                            <label for="week">Week</label><br>
+                        </div>
+                    </div>
+        
+                    <div class="container" id="highestRadio">
+                        <div id="form-group">
+                            <input type="radio" id="highestScore" name="highestScore">
+                            <label for="highestScore">Highest Score</label>
+                        </div>
+                    </div>
                 </div>
+
+                <button onclick="goHome()">Home</button>
             </div>
 
-            <div class="container" id="weekRadio">
-                <div id="form-group">
-                    <input type="radio" id="week" name="week">
-                    <label for="week">Week</label><br>
+            <div class="leaderContainer">
+                <div>
+                    <p>sdsd</p>
                 </div>
             </div>
-
-            <div class="container" id="highestRadio">
-                <div id="form-group">
-                    <input type="radio" id="highestScore" name="highestScore">
-                    <label for="highestScore">Highest Score</label>
-                </div>
-            </div>
-
         </div>
+    </div>
 
 
     </div>

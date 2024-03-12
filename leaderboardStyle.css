@@ -1,21 +1,52 @@
+#page{
+    border: 5px solid black;
+    height: 100vh;
+    margin: 0px;
+    position: relative; 
+    background-color: black;
+}
+
 #pageTop{
     font-size: 100px;
+    color: white;
     text-align: center;
     font-family: "Gill Sans", sans-serif;
     border: 5px solid black;
+    align-items: center;
+}
+
+
+.contentContainer{
+    border: 5px solid black;
+    display: flex;
+    flex-direction: row;   
+    height: 700px;
+    margin: 10px;
     position: relative;
+    padding: 10px;
+    gap: 250px;
+}
+
+.filterButContainer{
+    /*border: 5px solid white;*/
+    display: flex;
+    flex-direction: column;
+    gap: 200px;
+    justify-content: center;
     align-items: center;
 }
 
 .container{
     font-size: 25px;
-    border: 5px solid black;
-    margin: auto;
+    color: white;
+    border: 5px solid white;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     height: 20vh;
     width: 200px;
     gap: 10px;
+    margin-left: 3px;
 }
 
 #todayRadio{
@@ -33,4 +64,30 @@
 #filterTop{
     border: none;
     text-align: center;
+}
+
+.leaderContainer{
+    border: 5px solid white;
+    height: auto;
+    width: 1000px;
+}
+
+button{
+    width: 220px;
+    height: 100px;
+    background-color: black;
+    color: white;
+    border: 5px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 50px;
+    font-family: "Gill Sans", sans-serif;
+}
+
+button:hover{
+    background-color: rgb(53, 53, 53);
+}
+
+button:active{
+    background-color: rgb(131, 131, 131);
 }
