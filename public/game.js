@@ -1,5 +1,5 @@
-import './gameStyle.css'
-import Phaser from '/public/phaser.js'
+//import './gameStyle.css'
+import {Phaser} from './phaser.js'
 
 var config = {
     type:Phaser.WEBGL,
