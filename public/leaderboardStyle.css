@@ -29,7 +29,6 @@
 }
 
 .filterButContainer{
-    /*border: 5px solid white;*/
     display: flex;
     flex-direction: column;
     gap: 200px;

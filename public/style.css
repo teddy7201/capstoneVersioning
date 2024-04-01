@@ -25,14 +25,6 @@ header{
     justify-content: center;
     border: 5px solid black;
     position: relative;
-
-    /*
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    border: 5px solid white;
-    margin-top: 100px;
-    */
 }
 
 #createGameBtn{
@@ -71,12 +63,6 @@ button:active{
     background-color: rgb(131, 131, 131);
 }
 
-/*
-#logo{
-    height: 500px;
-    width: 500;
-}
-*/
 
 label{
     color: #ffffff;

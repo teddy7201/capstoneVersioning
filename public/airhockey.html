@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>
+        Home Page
+    </title>
+    <!--
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    -->
     <link rel="stylesheet" type="text/css" href="/public/style.css">
-    <title>Home Page</title>
+
     <script src="/public/function.js" async></script>
 </head>
 <body style="margin:0;">
@@ -16,7 +21,9 @@
     
         <div class="container">
                 <div class="container" id="createGameBtn">
-                    <button onclick = "createGame()">Create Game</button>
+                    <a href="/public/gameArea.html" id="browse-router">
+                        <button>Create Game</button>
+                    </a>
                 </div>
     
                 <div class="container" id="gameCodeInput">
@@ -34,7 +41,9 @@
                 </div>
     
                 <div class="container" id="leaderboardBtn">
-                    <button onclick="toLeaderboard()">Leaderboard</button>
+                    <a href="/public/leaderboardScreen.html" id="browse-router">
+                        <button>Leaderboard</button>
+                    </a>
                 </div>
                 <!--    
                 <div>
