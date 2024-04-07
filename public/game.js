@@ -1,12 +1,11 @@
-import './gameStyle.css'
-import Phaser from '/public/phaser.js'
-
 var config = {
-    type:Phaser.WEBGL,
+    type:Phaser.AUTO,
     width: 800,
     height: 600,
-    canvas: gameCanvas
+    canvas: gameCanvas,
+    scene: [Scene1]
 }
 
-const game = new Phaser.Game(config);
-
+window.onload = function() {
+    const game = new Phaser.Game(config);
+}
