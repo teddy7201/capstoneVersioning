@@ -1,3 +1,6 @@
+//import './gameStyle.css'
+import {Phaser} from './phaser.js'
+
 var config = {
     type:Phaser.AUTO,
     width: 800,
