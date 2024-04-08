@@ -1,11 +1,51 @@
+class Scene1 extends Phaser.Scene
+{
+    block;
 
-class Scene1 extends Phaser.Scene{
-    constructor(){
-        super("bootGame");
+    preload ()
+    {
+        this.load.image('block', 'assets/sprites/block.png');
     }
 
-    create(){
-        this.add.text(20,20, "Loading Game");
-        this.scene.start("playGame");
+    create ()
+    {
+        this.block = this.physics.add.image(400, 100, 'block')
+            //.setVelocity(100, 200)
+            .setBounce(1, 1)
+            .setCollideWorldBounds(true);
+
+        this.input.setDraggable(this.block.setInteractive());
+
+        this.input.on('dragstart', (pointer, obj) =>
+        {
+            obj.body.moves = false;
+        });
+
+        this.input.on('drag', (pointer, obj, dragX, dragY) =>
+        {
+            obj.setPosition(dragX, dragY);
+        });
+
+        this.input.on('dragend', (pointer, obj) =>
+        {
+            obj.body.moves = true;
+        });
     }
 }
+
+const config = {
+    type: Phaser.WEBGL,
+    width: 800,
+    height: 600,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            debug: true,
+            gravity: { y: 200 }
+        }
+    },
+    canvas: gameCanvas,
+    scene: Scene1
+};
+
+const game = new Phaser.Game(config);
