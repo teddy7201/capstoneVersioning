@@ -1,4 +1,4 @@
-var velo = 100;
+
 class Scene1 extends Phaser.Scene
 {
     constructor(){
@@ -15,19 +15,19 @@ class Scene1 extends Phaser.Scene
 
     create ()
     {   
+        this.physics.world.setBoundsCollision(true, true, true, true);
         this.points = 0;
-        this.scoreShow = this.add.text(830, 0, 'Score: ' + this.points);
+        this.scoreShow = this.add.text(600, 0, 'Score: ' + this.points);
         this.physics.world.setFPS(60);
 
         this.paddle = this.physics.add.sprite(300, 400, 'paddle')
-        
-        this.paddle.setCollideWorldBounds(true);
-        this.paddle.setImmovable(true);
-        this.paddle.setSize(150, 150, true);
+        this.paddle.body.setCollideWorldBounds(true);
         this.paddle.setCircle(55, 0, 0);
         this.paddle.setScale(1.2);
-        this.paddle.setPushable(false);
-
+        this.paddle.body.setBoundsRectangle(new Phaser.Geom.Rectangle(0, 0, 600, 800));
+        
+        this.paddle.setImmovable(true);
+        
         /* Code to make paddle draggable, unstable,awd switched to using WASD as inputs
         this.input.setDraggable(this.paddle.setInteractive());
         
@@ -55,16 +55,16 @@ class Scene1 extends Phaser.Scene
     
         this.puck = this.physics.add.sprite(1000, 400, 'puck')
         
-        this.puck.setVelocity(velo);
+        this.puck.setVelocity(300);
+
         this.puck.setCollideWorldBounds(true);
-        this.puck.setBounce(1.1);
-        this.puck.setMaxVelocity(750);
+
+        this.puckBouce = 1;
+        this.puck.setBounce(this.puckBouce);
         this.puck.setCircle(55, 0, 0);
-        this.puck.setScale(1);
 
         this.puck.body.useDamping = true;
         this.physics.add.collider(this.puck, this.paddle);
-        this.text = this.add.text(200, 0, 'Puck Velocity: ' + velo);
         //this.physics.add.collider(this.paddle, this.puck);
 
         this.playerGoal = this.add.rectangle(0, 400, 1, 250, 0xff0000);
@@ -80,38 +80,51 @@ class Scene1 extends Phaser.Scene
 
     update(){
         if (this.physics.collide(this.paddle, this.puck)){
-            velo = velo + 75;
-            this.puck.setVelocity(velo);
-            this.text.setText('Puck Velocity: ' + velo);
+            this.puck.setBounce(this.puckBouce + 0.1);
+            this.puck.setVelocity(300);
         }
+
+        if (this.puck.body.checkWorldBounds()) {
+			this.puck.setBounce(this.ballbounce + 0.2);
+		}
 
         if(this.physics.collide(this.puck, this.puckGoal)){
             this.points += 100;
             this.scoreShow.setText("Score: " + this.points);
             this.puck.setPosition(1000, 400);
-            this.puck.setVelocity(-1 * getRandomInt(300, 500));
+            if(this.points <= 200){
+                this.puck.setVelocity(-1 * getRandomInt(300, 500));
+                this.puck.setMaxVelocity(500);
+            }
+            else if (this.points <= 400){
+                this.puck.setVelocity(-1 * getRandomInt(400, 700));
+                this.puck.setMaxVelocity(700);
+            }
+            else if (this.points <= 600){
+                this.puck.setVelocity(-1 * getRandomInt(600, 900));
+                this.puck.setMaxVelocity(900);
+            }
+            else{
+                this.puck.setVelocity(-1 * getRandomInt(800, 1500));
+                this.puck.setMaxVelocity(1500);
+            }
+            
+            
         }
 
-        const lbody = this.paddle.body
-
+        this.paddle.setVelocity(0);
         if (this.keyA.isDown) {
-					
-            this.paddle.x -= 5;
-            lbody.updateFromGameObject();
-            
-        } else if (this.keyS.isDown) {
-            
-            this.paddle.y += 5;
-            lbody.updateFromGameObject();
+            this.paddle.setVelocityX(-400);
         } else if (this.keyD.isDown) {
-            
-            this.paddle.x += 5;
-            lbody.updateFromGameObject();
-        } else if (this.keyW.isDown) {
-            
-            this.paddle.y -= 5;
-            lbody.updateFromGameObject();
+            this.paddle.setVelocityX(400);
+        } 
+        if (this.keyW.isDown) {
+            this.paddle.setVelocityY(-400);
+        } else if (this.keyS.isDown) {
+            this.paddle.setVelocityY(400);
         }
+
+        
 
     }
  
@@ -131,9 +144,7 @@ const config = {
     physics: {
         default: 'arcade',
         arcade: {
-            debugShowVelocity: true,
             debug: true
-            
         }
     },
     canvas: gameCanvas,
