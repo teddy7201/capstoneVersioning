@@ -5,6 +5,7 @@ class Scene1 extends Phaser.Scene
         super("scene-game");
         this.paddle;
         this.puck;
+        this.playerName;
     }
 
     preload ()
