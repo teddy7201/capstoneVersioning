@@ -113,6 +113,28 @@ class Scene1 extends Phaser.Scene
             
         }
 
+        if(this.physics.collide(this.puck, this.playerGoal)){
+            this.win = this.add.text(450, 500, `Final Score: ` + this.points);
+
+				this.gameRestart = this.add.text(375, 200, 'Restart Game?', {
+					color: "black",
+					backgroundColor: "white"
+				});
+                this.goHome = this.add.text(775, 200, 'Go Home?', {
+					color: "black",
+					backgroundColor: "white"
+				});
+                this.playerGoal.destroy();
+                this.puckGoal.destroy();
+				this.gameRestart.setInteractive()
+				this.gameRestart.on('pointerdown', (pointer) => {
+					this.scene.restart();
+                });
+                this.goHome.on('pointerdown', (pointer) => {
+                    
+                });
+        }
+
         this.paddle.setVelocity(0);
         if (this.keyA.isDown) {
             this.paddle.setVelocityX(-400);
