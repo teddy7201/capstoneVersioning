@@ -32,7 +32,7 @@ var services = function(app){
         });
     });
 
-    app.get('/public/leaderboardScreen.html', function(req,res){
+    app.get('/getGameData', function(req,res){
         connection.query("SELECT * FROM games", function(err, rows){
             if(err){
                 return res.status(200).send(JSON.stringify({msg: "Error: " + err}));

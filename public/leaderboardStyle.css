@@ -91,3 +91,8 @@ button:hover{
 button:active{
     background-color: rgb(131, 131, 131);
 }
+
+#boardHeader{
+    Font-size: 50px;
+    color: white;
+}

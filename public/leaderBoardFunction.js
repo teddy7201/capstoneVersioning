@@ -2,13 +2,13 @@ getData();
 
 function getData() {
     $.ajax({
-        url: gameURL + '/public/leaderboardScreen.html',
+        url: gameURL + '/getGameData',
         type: 'get',
-        dataType: 'json',
+        //dataType: 'JSON',
         success: function(response){
             var data = JSON.parse(response);
                 if(data.msg == "SUCCESS"){
-                    createLibraryTable(data.games);
+                    createLeaderboard(data.games);
                 }
             
         },
