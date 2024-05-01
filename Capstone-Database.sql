@@ -12,6 +12,6 @@ CREATE TABLE `CapstoneHockeyV2`.`games` (
   `games_id` INT NOT NULL AUTO_INCREMENT,
   `player_name` VARCHAR(45) NULL,
   `player_score` INT NULL,
-  `game_date` DATE NULL,
+  `game_date` DATETIME NULL,
   PRIMARY KEY (`games_id`))
 ENGINE = InnoDB;

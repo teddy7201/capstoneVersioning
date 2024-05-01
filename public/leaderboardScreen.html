@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="leaderboardStyle.css">
     <title>Leaderboard</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="function.js"></script>
+    <script src="leaderBoardFunction.js" async></script>
 </head>
 <body style="margin: 0;">
     <div id="page">
@@ -48,16 +48,23 @@
             </div>
 
             <div class="leaderContainer">
-                <div>
-                    <p>sdsd</p>
-                </div>
+                <thead id = boardHeader>
+                    <tr>
+                        <th>Game ID</th>
+                        <th>Player Name</th>
+                        <th>Player Score</th>
+                        <th>Game Date</th>
+                    </tr>
+                </thead>
+                <tbody id = 'boardBody'>
+
+                </tbody>
             </div>
         </div>
     </div>
 
 
     </div>
-
-    <script src="function.js"></script>
 </body>
+
 </html>

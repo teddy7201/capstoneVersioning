@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const { createServer } = require('node:http');
 var path = require('path');
 const bodyParser = require('body-parser');
 
@@ -14,6 +13,8 @@ app.use((req, res, next) =>{
     next();
 });
 
+var server;
+var port = process.env.PORT || process.env.NODE_PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -23,11 +24,11 @@ app.use("/public", express.static(path.resolve(__dirname + "/../public/")));
 var router = require('./router.js');
 router(app);
 
-const server = createServer(app);
-
 var services = require('./service.js')
 services(app);
 
-server.listen(3000, () => {
-    console.log('Server is running on port 3000');
-})
+server = app.listen(port, function(err) {
+    if(err) throw err;
+
+    console.log("Listening on port: " + port);
+});

@@ -1,12 +1,10 @@
+var playerName = getName();
+var games_id = 'DEFAULT';
+var game_date = new Date();
+var points = 0;
 
 class Scene1 extends Phaser.Scene
 {
-    constructor(){
-        super("scene-game");
-        this.paddle;
-        this.puck;
-        this.playerName;
-    }
 
     preload ()
     {
@@ -16,9 +14,7 @@ class Scene1 extends Phaser.Scene
 
     create ()
     {   
-        this.physics.world.setBoundsCollision(true, true, true, true);
-        this.points = 0;
-        this.scoreShow = this.add.text(600, 0, 'Score: ' + this.points);
+        this.scoreShow = this.add.text(600, 0, 'Score: ' + points);
         this.physics.world.setFPS(60);
 
         this.paddle = this.physics.add.sprite(300, 400, 'paddle')
@@ -29,7 +25,7 @@ class Scene1 extends Phaser.Scene
         
         this.paddle.setImmovable(true);
         
-        /* Code to make paddle draggable, unstable,awd switched to using WASD as inputs
+        /* Code to make paddle draggable, unstable, switched to using WASD as inputs
         this.input.setDraggable(this.paddle.setInteractive());
         
         this.input.on('dragstart', (pointer, obj) =>
@@ -66,7 +62,6 @@ class Scene1 extends Phaser.Scene
 
         this.puck.body.useDamping = true;
         this.physics.add.collider(this.puck, this.paddle);
-        //this.physics.add.collider(this.paddle, this.puck);
 
         this.playerGoal = this.add.rectangle(0, 400, 1, 250, 0xff0000);
         this.physics.add.existing(this.playerGoal);
@@ -90,8 +85,8 @@ class Scene1 extends Phaser.Scene
 		}
 
         if(this.physics.collide(this.puck, this.puckGoal)){
-            this.points += 100;
-            this.scoreShow.setText("Score: " + this.points);
+            points += 100;
+            this.scoreShow.setText("Score: " + points);
             this.puck.setPosition(1000, 400);
             if(this.points <= 200){
                 this.puck.setVelocity(-1 * getRandomInt(300, 500));
@@ -114,25 +109,47 @@ class Scene1 extends Phaser.Scene
         }
 
         if(this.physics.collide(this.puck, this.playerGoal)){
-            this.win = this.add.text(450, 500, `Final Score: ` + this.points);
+            this.win = this.add.text(450, 500, `Final Score: ` + points);
 
-				this.gameRestart = this.add.text(375, 200, 'Restart Game?', {
-					color: "black",
-					backgroundColor: "white"
-				});
-                this.goHome = this.add.text(775, 200, 'Go Home?', {
-					color: "black",
-					backgroundColor: "white"
-				});
-                this.playerGoal.destroy();
-                this.puckGoal.destroy();
-				this.gameRestart.setInteractive()
-				this.gameRestart.on('pointerdown', (pointer) => {
-					this.scene.restart();
-                });
-                this.goHome.on('pointerdown', (pointer) => {
-                    
-                });
+			this.gameRestart = this.add.text(375, 200, 'Restart Game?', {
+				color: "black",
+				backgroundColor: "white"
+			});
+            this.goHome = this.add.text(775, 200, 'Go Home?', {
+				color: "black",
+				backgroundColor: "white"
+			});
+
+            this.games_idText = this.add.text(375,400, 'Game ID: ' + games_id, {
+				color: "black",
+				backgroundColor: "white"
+			});
+
+            this.player_nameText = this.add.text(775,600, 'Player Name: ' + playerName, {
+				color: "black",
+				backgroundColor: "white"
+			});
+
+            this.date = this.add.text(375,600, 'Date: ' + formatDate(game_date), {
+				color: "black",
+				backgroundColor: "white"
+			});
+
+            this.playerGoal.destroy();
+            this.puckGoal.destroy();
+
+            sendData();
+
+			this.gameRestart.setInteractive();
+			this.gameRestart.on('pointerdown', (pointer) => {
+				points = 0
+                this.scene.restart();
+            });
+
+            this.goHome.setInteractive();
+            this.goHome.on('pointerdown', (pointer) => {
+                goHome();
+            });
         }
 
         this.paddle.setVelocity(0);
@@ -153,12 +170,6 @@ class Scene1 extends Phaser.Scene
  
     
 }
-
-function getRandomInt(min, max) {
-    const minCeiled = Math.ceil(min);
-    const maxFloored = Math.floor(max);
-    return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
-  }
 
 const config = {
     type: Phaser.WEBGL,

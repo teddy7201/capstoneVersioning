@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     -->
     <link rel="stylesheet" type="text/css" href="/public/style.css">
-    <!--
-    <script src="/public/function.js" async></script>-->
+    <!---->
+    <script src="/public/function.js"></script>
 </head>
 <body style="margin:0;">
     <div id="page">
@@ -19,24 +19,18 @@
             Web Hockey
         </header>
     
-        <div class="container">
+        <div class="container" >
                 <div class="container" id="createGameBtn">
                     <a href="/public/gameArea.html" id="browse-router">
                         <button>Create Game</button>
                     </a>
                 </div>
     
-                <div class="container" id="gameCodeInput">
-                    <div class="form-group">
-                        <label class='form_med' for="gameCode">Game Code:</label>
-                        <input type="text" id="gameCode" name="gameCode" class="form-control form_md form_input" size='10'>
-                    </div>
-                </div>
     
                 <div class="container" id="playerNameInput">
-                    <div class="form-group">
-                        <label class='form_med' for="playerName">Player Name:</label>
-                        <input type="text" id="playerName" name="playerName" class="form-control form_md form_input" size='10'>
+                    <div>
+                        <label for="playerName">Player Name:</label><br>
+                        <input type="text" id="playerName" onchange=saveName()>
                     </div>
                 </div>
     
@@ -52,7 +46,5 @@
                 -->
         </div>
     </div>
-    
-
 </body>
 </html>
