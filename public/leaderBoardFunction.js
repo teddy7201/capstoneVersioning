@@ -7,9 +7,10 @@ function getData() {
         //dataType: 'JSON',
         success: function(response){
             var data = JSON.parse(response);
-                if(data.msg == "SUCCESS"){
-                    createLeaderboard(data.games);
-                }
+            if(data.msg == "SUCCESS"){
+                createLeaderboard(data.games);
+            }
+            
             
         },
         error: function(err){
