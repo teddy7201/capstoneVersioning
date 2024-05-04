@@ -21,24 +21,19 @@
                         Filters
                     </header>
         
-                    <div class="container" id="todayRadio">
-                        <div class="form-group">
-                            <input type="radio" id="today" name="today">
-                            <label for="today">Today</label><br>
-                        </div>
-                    </div>
-        
-                    <div class="container" id="weekRadio">
-                        <div id="form-group">
-                            <input type="radio" id="week" name="week">
-                            <label for="week">Week</label><br>
-                        </div>
-                    </div>
-        
-                    <div class="container" id="highestRadio">
-                        <div id="form-group">
-                            <input type="radio" id="highestScore" name="highestScore">
-                            <label for="highestScore">Highest Score</label>
+                    <div class="container" id = "radioContainer">
+                        <div class="radio-group">
+                            <input type="radio" id="noneRadio" onclick="noneRadioFunc()">
+                            <label for="noneRadio">None</label><br>
+
+                            <input type="radio" id="todayRadio" onclick="todayRadioFunc()">
+                            <label for="todayRadio">Today</label><br>
+
+                            <input type="radio" id="weekRadio" onclick="weekRadioFunc()">
+                            <label for="weekRadio">Week</label><br>
+
+                            <input type="radio" id="highestRadio" onclick="highestRadioFunc()">
+                            <label for="highestRadio" id = highestRadioLab >Highest Score</label><br>
                         </div>
                     </div>
                 </div>
@@ -53,9 +48,9 @@
                     <colgroup>
                         <col>
                     </colgroup>
-                    <thead id = boardHeader>
+                    <thead id = 'boardHeader'>
                         <tr>
-                            <th>Game ID</th>
+                            <!--<th>Game ID</th>-->
                             <th>Player Name</th>
                             <th>Player Score</th>
                             <th>Game Date</th>

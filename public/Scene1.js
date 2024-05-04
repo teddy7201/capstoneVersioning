@@ -8,41 +8,29 @@ class Scene1 extends Phaser.Scene
 
     preload ()
     {
-        this.load.image('puck', '/../public/picsForHockey/puck.png');
-        this.load.image('paddle', '/../public/picsForHockey/hockey-paddle.png');
+        this.load.image('puck', '/../public/picsForHockey/Hockey-Puck.png');
+        this.load.image('paddle', '/../public/picsForHockey/Hockey-Paddle.png');
+        this.load.image('background', '/../public/picsForHockey/Air Hockey Table Design 1.png')
     }
 
     create ()
     {   
-        this.scoreShow = this.add.text(600, 0, 'Score: ' + points);
+        this.add.image(600, 400,'background');
         this.physics.world.setFPS(60);
 
+        this.scoreShow = this.add.text(5, 5, 'Score: ' + points, {
+            color: "white",
+            fontSize: 25
+        });
+
         this.paddle = this.physics.add.sprite(300, 400, 'paddle')
+        this.paddle.setScale(0.4);
         this.paddle.body.setCollideWorldBounds(true);
-        this.paddle.setCircle(55, 0, 0);
-        this.paddle.setScale(1.2);
+        this.paddle.setCircle(160, 2, 3);
         this.paddle.body.setBoundsRectangle(new Phaser.Geom.Rectangle(0, 0, 600, 800));
         
         this.paddle.setImmovable(true);
         
-        /* Code to make paddle draggable, unstable, switched to using WASD as inputs
-        this.input.setDraggable(this.paddle.setInteractive());
-        
-        this.input.on('dragstart', (pointer, obj) =>
-        {
-            obj.body.moves = false;
-        });
-
-        this.input.on('drag', (pointer, obj, dragX, dragY) =>
-        {
-            obj.setPosition(dragX, dragY);
-        });
-
-        this.input.on('dragend', (pointer, obj) =>
-        {
-            obj.body.moves = true;
-        });
-        */ 
         this.cursorKeys = this.input.keyboard.createCursorKeys();
 
         this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -58,20 +46,22 @@ class Scene1 extends Phaser.Scene
 
         this.puckBouce = 1;
         this.puck.setBounce(this.puckBouce);
-        this.puck.setCircle(55, 0, 0);
-
+        this.puck.setScale(0.3);
+        this.puck.setCircle(182, 5, 5);
         this.puck.body.useDamping = true;
         this.physics.add.collider(this.puck, this.paddle);
 
-        this.playerGoal = this.add.rectangle(0, 400, 1, 250, 0xff0000);
+        /**/
+        this.playerGoal = this.add.rectangle(0, 400, 3, 250, 0xFFFFFF);
         this.physics.add.existing(this.playerGoal);
         this.physics.add.collider(this.playerGoal);
         this.playerGoal.body.setImmovable(true);
         
-        this.puckGoal = this.add.rectangle(1200, 400, 1, 250, 0xFFACAC);
+        this.puckGoal = this.add.rectangle(1200, 400, 3, 250, 0xFFFFFF);
         this.physics.add.existing(this.puckGoal);
         this.physics.add.collider(this.puckGoal);
         this.puckGoal.body.setImmovable(true);
+        
     }
 
     update(){
@@ -109,34 +99,45 @@ class Scene1 extends Phaser.Scene
         }
 
         if(this.physics.collide(this.puck, this.playerGoal)){
-            this.win = this.add.text(450, 500, `Final Score: ` + points);
-
-			this.gameRestart = this.add.text(375, 200, 'Restart Game?', {
-				color: "black",
-				backgroundColor: "white"
-			});
-            this.goHome = this.add.text(775, 200, 'Go Home?', {
-				color: "black",
-				backgroundColor: "white"
-			});
-
-            this.games_idText = this.add.text(375,400, 'Game ID: ' + games_id, {
-				color: "black",
-				backgroundColor: "white"
-			});
-
-            this.player_nameText = this.add.text(775,600, 'Player Name: ' + playerName, {
-				color: "black",
-				backgroundColor: "white"
-			});
-
-            this.date = this.add.text(375,600, 'Date: ' + formatDate(game_date), {
-				color: "black",
-				backgroundColor: "white"
-			});
+            this.text = this.add.text(400, 100, '', {
+                fixedWidth: 400,
+                fixedHeight: 500,
+                backgroundColor: '#000c'
+            });
+    
+            this.win = this.add.text(600, 250, `Final Score: ` + points, {
+                color: "white",
+                fontSize: 25
+            });
+            this.win.setOrigin(0.5, 1);		
+    
+            this.player_nameText = this.add.text(600,150, 'Player Name: ' + playerName, {
+                color: "white",
+                fontSize: 25
+            });
+            this.player_nameText.setOrigin(0.5, 1);
+    
+            this.date = this.add.text(600,350, 'Date: ' + formatDate(game_date), {
+                color: "white",
+                fontSize: 25
+            });
+            this.date.setOrigin(0.5, 1);
+            
+            this.gameRestart = this.add.text(525, 500, 'Restart Game?', {
+                color: "white",
+                fontSize: 25
+            });
+            this.gameRestart.setOrigin(0.5, 1);
+    
+            this.goHome = this.add.text(700, 500, 'Go Home?', {
+                color: "white",
+                fontSize: 25
+            });
+            this.goHome.setOrigin(0.5, 1);
 
             this.playerGoal.destroy();
             this.puckGoal.destroy();
+            this.scoreShow.destroy();
 
             sendData();
 
@@ -178,7 +179,7 @@ const config = {
     physics: {
         default: 'arcade',
         arcade: {
-            debug: true
+           // debug: true
         }
     },
     canvas: gameCanvas,

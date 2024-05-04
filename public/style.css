@@ -2,6 +2,7 @@
     margin: 0;
     background-color: black;
     height: 100vh;
+    width: 100vw;
 }
 
 header{
@@ -21,26 +22,42 @@ header{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
-    justify-items: center;
-    justify-content: center;
-    border: 5px solid black;
     position: relative;
 }
 
 #createGameBtn{
     border: none;
+    margin: auto;
+    height: 120px;
+    width: 550px;
 }
 
 #playerNameInput{
     border: none;
+    margin: auto;
+    height: 120px;
+    width: 550px;
+}
+
+#playerNameInputCon{
+    border: none;
+    margin: auto;
+    height: 120px;
+    width: 550px;
+    
+}
+
+#playerName{
+    height: 25px;
+    width: 200px;
+    margin: auto;
 }
 
 #leaderboardBtn{
     border: none;
-}
-
-#gameCodeInput{
-    border: none;
+    margin: auto;
+    height: 120px;
+    width: 550px;
 }
 
 button{
@@ -64,7 +81,7 @@ button:active{
 }
 
 
-label{
+#playerNameLab{
     color: #ffffff;
     font-size: 50px;
     height: 100px;

@@ -32,8 +32,8 @@ var services = function(app){
         });
     });
 
-    app.get('/getGameData', function(req,res){
-        connection.query("SELECT * FROM games", function(err, rows){
+    app.get('/getGameData', function(req,res){ //returns data not in a specific order
+        connection.query("SELECT * FROM games;", function(err, rows){
             if(err){
                 return res.status(200).send(JSON.stringify({msg: "Error: " + err}));
             }
@@ -42,6 +42,41 @@ var services = function(app){
             }
         })
     });
+
+    app.get('/getTodayData', function(req,res){ //returns data from today
+        connection.query("SELECT * FROM games WHERE game_date = CURDATE() ORDER BY player_score DESC", function(err, rows){
+            if(err){
+                return res.status(200).send(JSON.stringify({msg: "Error: " + err}));
+            }
+            else{
+                return res.status(200).send(JSON.stringify({msg: "SUCCESS", games: rows}));
+            }
+        })
+    });
+
+    app.get('/getWeekData', function(req,res){ //returns data entered the from today to 7 days ago
+        connection.query("SELECT * FROM games WHERE game_date > DATE_SUB(NOW(), INTERVAL 1 WEEK) ORDER BY game_date DESC;", function(err, rows){
+            if(err){
+                return res.status(200).send(JSON.stringify({msg: "Error: " + err}));
+            }
+            else{
+                return res.status(200).send(JSON.stringify({msg: "SUCCESS", games: rows}));
+            }
+        })
+    });
+
+    app.get('/getHighestData', function(req,res){ //returns data in the order of highest score
+        connection.query("SELECT * FROM games ORDER BY player_score DESC;", function(err, rows){
+            if(err){
+                return res.status(200).send(JSON.stringify({msg: "Error: " + err}));
+            }
+            else{
+                return res.status(200).send(JSON.stringify({msg: "SUCCESS", games: rows}));
+            }
+        })
+    });
+
+
 };
 
 module.exports = services;

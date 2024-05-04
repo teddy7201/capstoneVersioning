@@ -1,6 +1,7 @@
 #page{
     border: 5px solid black;
     height: 100vh;
+    width: 100vw;
     margin: 0px;
     position: relative; 
     background-color: black;
@@ -18,11 +19,10 @@
 
 
 .contentContainer{
-    border: 5px solid black;
     display: flex;
     flex-direction: row;   
     height: 700px;
-    margin: 10px;
+    margin: auto;
     position: relative;
     padding: 10px;
     gap: 250px;
@@ -34,6 +34,7 @@
     gap: 200px;
     justify-content: center;
     align-items: center;
+    
 }
 
 .container{
@@ -49,27 +50,32 @@
     margin-left: 3px;
 }
 
-#todayRadio{
+#radioContainer{
     border: none;
+    font-family: "Lucida Console", "Courier New", monospace;
 }
 
-#weekRadio{
-    border: none;
+#highestRadioLab{
+    font-size: 20px;
 }
 
-#highestRadio{
-    border: none;
-}
 
 #filterTop{
     border: none;
+    margin: auto;
+    padding-top: 5px;
     text-align: center;
+    height: 50px;
+    width: 150px;
+    font-family: "Gill Sans", sans-serif;
+    font-size: 40px;
 }
 
 .leaderContainer{
     border: 5px solid white;
     height: auto;
     width: 1000px;
+    overflow-y:scroll;
 }
 
 button{
@@ -95,4 +101,20 @@ button:active{
 #boardHeader{
     Font-size: 50px;
     color: white;
+    background-color: black;
+    position: sticky;
+    top: 0px;
+    font-family: "Gill Sans", sans-serif;
+}
+
+#boardBody{
+    Font-size: 25px;
+    color: white;
+    text-align: center;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+#leaderTable{
+    margin: auto;
+    width: 100%;
 }

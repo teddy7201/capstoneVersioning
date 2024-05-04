@@ -20,12 +20,12 @@ function getName(){
 
 function sendData() {
     const d = new Date();
-    var dateDB = d.toISOString().slice(0, 19).replace('T', ' ');
+    var dateDB = formatDate(d);
 
     var games_id = 'DEFAULT';
     var player_name = playerName;
     var player_score = points;
-    var game_date = dateDB; //Seems to be off by 4 hours, function might be using a different time zone
+    var game_date = dateDB; 
     
     var jsonString = {
         games_id: games_id, 
