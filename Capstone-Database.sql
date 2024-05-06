@@ -37,4 +37,8 @@ VALUES
     (DEFAULT, 'Eon', 1100, '2024-05-03'),
     (DEFAULT, 'Golem', 1000, '2024-05-02'),
     (DEFAULT, 'Hen', 300, '2024-05-01'),
-    (DEFAULT, 'Flask', 200, '2024-04-30');
+    (DEFAULT, 'Flask', 200, '2024-04-30'),
+    (DEFAULT, 'Fire', 800, '2024-05-04'),
+    (DEFAULT, 'Manny', 0, '2024-05-03'),
+    (DEFAULT, 'Hudson', 400, '2024-05-05'),
+    (DEFAULT, 'Mason', 900, '2024-05-05');

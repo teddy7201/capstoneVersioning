@@ -1,11 +1,11 @@
 var gameURL = 'http://localhost:3000';
 
 function toLeaderboard(){
-    window.location.href = gameURL + '/public/leaderboardScreen.html';
+    window.location.href = gameURL + '/public/html/leaderboardScreen.html';
 }
 
 function goHome(){
-    window.location.href = gameURL + '/public/airhockey.html';
+    window.location.href = gameURL + '/public/html/airhockey.html';
 }
 
 function saveName(){
@@ -35,7 +35,7 @@ function sendData() {
     };
 
     $.ajax({
-        url: gameURL + "/public/gameArea.html",
+        url: gameURL + "/public/html/gameArea.html",
         type: "post",
         data: jsonString,
         success: function(response){

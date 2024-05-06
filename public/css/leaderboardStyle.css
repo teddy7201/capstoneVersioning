@@ -1,7 +1,7 @@
 #page{
     border: 5px solid black;
     height: 100%;
-    width: 100%;
+    width: auto;
     margin: auto; 
     background-color: black;
 }
@@ -19,7 +19,7 @@
 .contentContainer{
     display: flex;
     flex-direction: row;   
-    height: 100%;
+    height: 83.7vh;
     margin: auto;
     position: relative;
     padding: 10px;
@@ -42,7 +42,7 @@
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
     margin-left: 3px;
 }
 
@@ -69,7 +69,7 @@
 
 .leaderContainer{
     border: 5px solid white;
-    height: auto;
+    height: 700px;
     width: 1000px;
     overflow-y:scroll;
 }

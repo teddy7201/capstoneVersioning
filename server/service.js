@@ -14,7 +14,7 @@ connection.connect(function(err) {
 });
 
 var services = function(app){
-    app.post('/public/gameArea.html', function(req, res){
+    app.post('/public/html/gameArea.html', function(req, res){
         var data = {
             games_id: req.body.games_id,
             player_name: req.body.player_name,
