@@ -1,11 +1,9 @@
 #page{
     border: 5px solid black;
-    height: 100vh;
-    width: 100vw;
-    margin: 0px;
-    position: relative; 
+    height: 100%;
+    width: 100%;
+    margin: auto; 
     background-color: black;
-    position: fixed;
 }
 
 #pageTop{
@@ -21,7 +19,7 @@
 .contentContainer{
     display: flex;
     flex-direction: row;   
-    height: 700px;
+    height: 100%;
     margin: auto;
     position: relative;
     padding: 10px;
@@ -44,9 +42,7 @@
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    height: 20vh;
-    width: 200px;
-    gap: 10px;
+    width: 80%;
     margin-left: 3px;
 }
 
